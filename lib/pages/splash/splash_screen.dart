@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_leap/config/config.dart';
+import 'package:task_leap/widgets/custom_button/custom_button.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String route = "/splash-screen";
@@ -11,12 +12,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Future<void> init() async {
-    /*
-    The line is imitating the verifying process that if a user exists or not.
-
-    Here we add a note to remember later that we need to add something here.
-     */
-    // TODO: Check if user exists
+    
     await Future.delayed(const Duration(seconds: 1));
 
     // mounted ensures that the context is still present and user has not went out of context
@@ -42,7 +38,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Show the app logo and maybe the app name
-    return const Placeholder();
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: size.width*0.8),
+          child: Image.asset(Assets.gdscLogo),
+          ),
+      ),
+    );
   }
 }
